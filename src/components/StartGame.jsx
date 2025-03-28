@@ -11,7 +11,7 @@ const StartGame = () => {
       </div>
       <div className='content'>
         <h1>
-          Dice Game
+          Dice Gam
         </h1>
         <Button>
           Play Now
