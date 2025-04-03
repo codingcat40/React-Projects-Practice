@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import StartGame from './components/StartGame'
+import GamePlay from './components/GamePlay';
 // const Button = styled.button`
 // background-color:  black;
 // color: white;
@@ -8,9 +10,20 @@ import StartGame from './components/StartGame'
 
 function App() {
 
+  const [isGameStarted, setIsGameStarted] = useState(true)
+  const toggleGamePlay = () => {
+    setIsGameStarted(!isGameStarted);
+  }
+
   return (
    <>
-      <StartGame />
+      
+      {
+       isGameStarted ? <GamePlay />
+       : <StartGame 
+        toggle={toggleGamePlay}
+       /> 
+      }
    </>
   )
 }
