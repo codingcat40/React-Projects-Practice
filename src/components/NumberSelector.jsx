@@ -7,19 +7,41 @@ const NumberSelector = () => {
   const [selected,setSelected] = useState(1);
   console.log(selected);
   return (
-    <div className=''>
+    <NumberSelectorContainer>
+      <div className='flex'>
       {
         numbers.map((item, index)=>(
-          <Box key={index}
+          <Box 
+          isSelected = {
+            item === selected
+          }
+          key={index}
           onClick={()=>setSelected(item)}
           >{item}</Box>
         ))
       }
-    </div>
+      </div>
+      <p>Select Number</p>
+    </NumberSelectorContainer>
+    
   )
 }
 
 export default NumberSelector
+
+const NumberSelectorContainer = styled.div`
+  .flex{
+    display: flex;
+    gap: 12px;
+  }
+  p{
+    font-size: 24px;
+    font-weight: 600px;
+  }
+  
+  
+`
+
 
 const Box = styled.div`
   width: 72px;
@@ -29,4 +51,7 @@ const Box = styled.div`
   place-items: center;
   font-size: 24px;
   font-weight: 300;
-`;
+  cursor: pointer;
+  background-color: ${(props) => props.isSelected ? "black":"white"};
+  color:${(props) => !props.isSelected ? "black":"white"};
+`; 
